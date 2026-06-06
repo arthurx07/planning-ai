@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<HEAD>
+<TITLE>Metric-FF Homepage</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<p>
+
+<spacer type=vertical size=10>
+
+<hr>
+
+<p>
+
+<spacer type=vertical size=10>
+
+<H2>
+<center>
+Welcome to the Homepage of <br>
+</h2>
+</center>
+
+<spacer type=vertical size=10>
+
+<center>
+<b><font size=+4>M</font><font size=+3>ETRIC-</font><font size=+4>FF</font></b><br>
+</center>
+
+
+<spacer type=vertical size=10>
+
+<center>
+<H2>  <a
+href="2002.html">Top Performer </a> in the Numeric Track of the <a
+href="http://www.dur.ac.uk/d.p.long/competition.html">3rd International Planning
+Competition</a> </h2>
+
+</center>
+
+<spacer type=vertical size=10>
+
+<hr>
+
+<p>
+
+
+<spacer type=vertical size=20>
+
+<p>
+
+<b>>> General Information </b> 
+
+<p>
+
+
+Metric-FF is a domain independent planning system developed by Joerg
+Hoffmann. The system is an extension of the <a href="ff.html">FF</a>
+planner to (ADL combined with) numerical state variables, more
+precisely to PDDL 2.1 level 2, yet more precisely to the subset of
+PDDL 2.1 level 2 described below with the algorithmic principles. The
+system is implemented in C. It has participated in the numerical
+domains of the
+<a href="http://www.dur.ac.uk/d.p.long/competition.html">3rd
+International Planning Competition</a>, demonstrating very competitive
+performance. See the <a
+href="2002.html">web page providing
+gnuplots of the respective runtime and solution length data.</a> On
+this page, I summarize the main algorithmic principles underlying the
+system, provide the source code used in the competition, and give
+pointers to relevant publications.
+
+
+
+
+
+
+<spacer type=vertical size=20>
+
+
+
+<p>
+
+<p>
+
+<b>>> Algorithmic Principles </b> 
+
+<p>
+
+
+As said, Metric-FF deals with PDDL 2.1 level 2, combined with
+ADL. Apart from the well-known ADL features, this allows for a finite
+number of <i> numerical state variables </i> (functions into the
+rational numbers, applied to tuples of the objects present in the task
+at hand). At any point in a (pre-, effect-, or goal-) condition
+formula where a logical atom is allowed, we now also allow for a <i>
+numerical constraint </i>, i.e., for a comparison ("<", "<=", "=",
+">=", or ">") between two expressions over the rational numbers and
+the numerical variables, using the operators "+", "-", "*" and "/". At
+any point where a logical effect is allowed, we now also allow for a
+<i> numerical effect </i>, which affects the value of a numerical
+variable (left hand side) by a numerical expression (right hand side),
+according to one of the operators ":=", "+=", or "-=" (the original
+language also allows for the assignment operators "*=" and "/="; we do
+not deal with these here).
+
+<p>
+
+Naturally, Metric-FF inherits the main ideas used in FF, see <a
+href="ff.html"> there
+</a>. Search still is a variation of hill-climbing in the space of all
+reachable states, and heuristic evaluation still is done by means of
+solving a relaxed task in each single search state, using a
+Graphplan-style algorithm (i.e., to solve the <i> relaxed </i>
+tasks). The resulting relaxed plans still inform the search by ways of
+a goal distance estimation --- the number of steps in the relaxed plan
+--- as well as by ways of an estimation which actions are most useful,
+resp. <i> helpful </i> --- roughly, those actions that are contained
+in the relaxed plan. The key difference is the definition of the <i>
+relaxation</i>. In the STRIPS / ADL setting, the task is relaxed by
+ignoring all delete lists, i.e., by ignoring all effects that worsen
+the current situation. Trying to non-trivially extend this concept to
+the numerical setting, the question is, <i> which numerical effects
+worsen the situation? </i> There is no immediately apparent
+answer. Any numerical effect might be good to achieve one numerical
+constraint, but at the same time violate another. The reason for this
+is that the numerical constraints are not <i> monotonic</i>: while one
+constraint (e.g. <i> x > 2 </i>) might prefer higher values of a
+variable <i> x </i>, another constraint (e.g. <i> x < 2 </i>) might
+prefer lower values. As is opposed to that, the conditions in the
+purely logical case all prefer "higher" values of the propositional
+variables: negative conditions are compiled away as a pre-process, and
+thus it is always preferable to have more propositional facts
+true. The observation exploited in Metric-FF is that the same
+methodology can be applied in the numerical setting, at least in a
+subset of the language. The task is pre-processed such that all
+numerical constraints are monotonic, i.e., for any constraint <i>
+con</i>, if <i> con </i> is true in a state <i> S </i> then <i> con
+</i> is true in any state <i> S' </i> where, for all variables <i>
+x</i>, <i> x(S') >= x(S)</i>. The relaxation is then simply to <i>
+ignore all effects that decrease the value of the affected
+variable</i>, and the relaxed task can be solved in Graphplan-style in
+a manner reminiscent of <a
+href="http://www.informatik.uni-freiburg.de/~koehler/ipp.html">
+Metric-IPP</a>. To achieve the monotonicity property, one needs, in
+the numerical constraints and effects, expressions that are monotonic
+in all variables. In the current implementation, we restrict ourselves
+to <i> linear expressions </i> which obviously have this property. For
+more technical details, try to make sense of the source code supplied
+below, or better yet, have a look at the ECAI paper or the JAIR
+submission.
+
+
+<p>
+
+
+
+Note that the above description, as well as the ECAI paper, address
+(only) the algorithms used in the version of Metric-FF that is called
+<i> FF.speed </i> in the official competition data. This uses relaxed
+plan length as the goal distance estimate in enforced hill-climbing
+(FF's original search algorithm, see <a
+href="ff.html">
+there</a>), enhanced by (the obvious extension of) helpful actions
+pruning. One can also configure the system to favor minimization of a
+given cost function. This configuration is what is called <i>
+FF.quality </i> in the data. Configured thus, the system does a
+standard weighted A* search where the cost of the relaxed plan
+(explained below) is taken as an estimate of the remaining cost. The
+weight parameters of the search can be given in the command line (in
+the competition, we used a factor of 1 for the path cost and a factor
+of 5 for the heuristic remaining cost). The cost function can be a
+linear expression over numerical state variables, as long as this can
+be translated to action costs that do not depend on the state of
+execution --- i.e. the cost function is accepted if each action only
+increases the cost by a constant, like the amount of fuel or time
+used. The cost of a relaxed plan is then simply the sum of the costs
+of the actions contained in it.
+
+
+
+
+
+
+
+<spacer type=vertical size=20>
+
+
+
+
+
+
+
+<p>
+
+<p>
+
+<b>>> Source Code Available</b> 
+
+<p>
+
+
+Here is the source code for <a
+href="ff/Metric-FF.tgz">Metric-FF</a>
+as used in the competition. This is distributed under the GNU General
+Public License. Please let <A
+HREF="mailto:hoffmann@mpi-sb.mpg.de">us</a> know if you download the
+code, and if you find it useful for whatever purposes you are
+pursueing.
+
+
+<p>
+
+<font size="+1" color=red>NEW!!</font> I made
+a <a href="ff/Metric-FF-v2.0.tgz">version 2.0</a> of Metric-FF that
+treats additive cost minimization in a much better way, using
+A*-epsilon to combine the usual relaxed plan goal-distance estimation
+with relaxed plan remaining-cost estimation. As a gimmick, this
+version also handles a simple form of derived predicates where those
+predicates are not allowed to occur negated in preconditions/axiom
+conditions/goals.
+
+<p>
+
+<font size="+1" color=red>Even newer</font> I now made
+a <a href="ff/Metric-FF-v2.1.tgz">version 2.1</a> of Metric-FF which
+is like 2.0 except it adds the possiblity to specify an upper bound on
+plan cost. (If that is done, states are pruned based on g + hmax.)
+
+<p>
+
+<b>ATTENTION!</b> Those of you who have been in contact with FF before
+may be aware that for many years there has been trouble with the
+parser, that had been written in 1997 and did no longer comply with
+up-to-date bison/flex versions. I would like to extend <b>a big fat
+thank-you to Andrew Coles of Strathclyde University, who took the time
+to look into this and fix it.</b>
+<a href="ff/Metric-FF.tgz">The link
+above</a> gives the new patched version of Metric-FF. Andrew has
+tested this with flex 2.5.34 and 2.5.35, as well as bison 2.3 and
+2.4.1.
+
+<p>
+
+Vidminas Mikucionis made a cross-platform port of Metric-FF v1.0 and
+v2.1, that runs on windows. You can find this code here:
+<a href="https://github.com/Vidminas/metric-ff-crossplatform">Metric-FF
+windows versions</a>.
+
+<p>
+
+
+
+
+
+<spacer type=vertical size=20>
+
+
+
+<p>
+
+<b>>> Relevant Papers</b>
+
+<p>
+
+
+<ul>
+
+<p>
+
+<li> For the background, there is a detailed JAIR article on the FF
+system as it was used in the 2nd international planning competition
+(FF-v2.2).
+
+<p>
+
+<a J. Hoffmann, <a href="http://www.informatik.uni-freiburg.de/~nebel">B. Nebel</a>,
+<b>The FF Planning System: Fast Plan Generation Through Heuristic
+Search</b>, in: Journal of Artificial Intelligence Research, Volume
+14, 2001, Pages 253 - 302. (<a
+href="papers/jair01.ps.gz">
+gzip'ed postscript file</a>) (<a
+href="papers/jair01.bib">bib
+entry</a>)
+
+<p>
+
+<li> A conference paper on the main heuristic algorithm used in
+Metric-FF is published at ECAI-2002.
+
+<p>
+
+<a J. Hoffmann, <b>Extending FF to Numerical State Variables</b>, in:
+<i>Proceedings of the 15th European Conference on Artificial
+Intelligence</i>, Lyon, France, July 2002. (<a
+href="papers/ecai02.ps.gz">gzip'ed
+postscript file</a>) (<a
+href="papers/ecai02.bib">bib
+entry</a>)
+
+<p>
+
+<li> There's also a long journal article, discussing in a lot of
+detail the Metric-FF approach, and describing the system as used in
+the 3rd International Planning Competition.
+
+<p>
+
+<a J. Hoffmann, <b>The Metric-FF Planning System: Translating
+``Ignoring Delete Lists'' to Numeric State Variables</b>, in: Journal
+of Artificial Intelligence Research, special issue on the 3rd
+International Planning Competition (<a href="papers/jair03.ps.gz">
+gzip'ed postscript file</a>) (<a href="papers/jair03.bib">bib
+entry</a>)
+
+
+</ul>
+
+<p>
+
+
+
+
+<spacer type=vertical size=20>
+
+
+
+<hr>
+
+<p>
+
+<spacer type=vertical size=10>
+
+
+
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<a href="http://sm7.sitemeter.com/stats.asp?site=sm7FastForward" target="_top">
+<img src="http://sm7.sitemeter.com/meter.asp?site=sm7FastForward" alt="Site Meter" border=0></a>
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+
+
+<p>
+
+<spacer type=vertical size=10>
+
+<hr>
+
+<p>
+
+<spacer type=vertical size=10>
+
+
+</body>
+
+</html>
