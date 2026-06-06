@@ -1,0 +1,16 @@
+Software
+  https://fai.cs.uni-saarland.de/hoffmann/ff.html
+  https://github.com/tranchis/metric-ff-macos
+  https://www.cs.upc.edu/~jvazquez/teaching/iag/laboratorio/run_ff.html
+
+Vídeos
+  https://www.youtube.com/watch?v=b3VFezFHchE ( Práctica de Planificación 1 - Material )
+  https://www.youtube.com/watch?v=QrkxlxMeFP0 ( Práctica de Planificación 2 - Lenguaje PDDL 1 )
+  https://www.youtube.com/watch?v=YdlVmEg7Iy0 ( Práctica de Planificación 3 - Lenguaje PDDL 2 )
+  https://www.youtube.com/watch?v=Juh2kMeoC2Y ( Práctica de Planificación 4 - Ejecucion de FastForward )
+
+Otro Material
+  https://users.cecs.anu.edu.au/~patrik/pddlman/writing.html
+  https://www.ida.liu.se/~TDDC17/info/labs/planning/writing.shtml
+  https://fareskalaboud.github.io/LearnPDDL/
+  https://fai.cs.uni-saarland.de/hoffmann/ff-domains.html
