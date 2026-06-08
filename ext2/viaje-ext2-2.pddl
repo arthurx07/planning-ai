@@ -52,7 +52,7 @@
         (= (min-dias zaragoza) 1) (= (max-dias zaragoza) 4)
         (= (min-dias barcelona) 1) (= (max-dias barcelona) 4)
 
-        ;; Interés malo (Valor 3 = aburrido)
+        ;; Interés bajo
         (= (interes madrid) 3)
         (= (interes zaragoza) 3)
         (= (interes barcelona) 3)
@@ -64,7 +64,7 @@
         (= (min-dias venecia) 1) (= (max-dias venecia) 1)
         (= (min-dias milan) 1) (= (max-dias milan) 2)
 
-        ;; Interés excelente (Valor 1 = máximo interés)
+        ;; Interés alto
         (= (interes roma) 1)
         (= (interes florencia) 1)
         (= (interes venecia) 1)

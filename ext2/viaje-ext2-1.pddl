@@ -42,10 +42,10 @@
         (= (max-dias roma) 3)
 
         ;; VALORES DE INTERÉS (1 = Mayor interés, 3 = Menor interés)
+        (= (interes roma) 1)
         (= (interes madrid) 1)
         (= (interes barcelona) 2)
         (= (interes paris) 3)
-        (= (interes roma) 1)
     )
 
     (:goal (and
