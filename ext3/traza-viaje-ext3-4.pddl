@@ -33,5 +33,6 @@ time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
                0.00 seconds creating final representation with 23 relevant facts, 12 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
-               0.00 seconds searching, evaluating 377 states, to a max depth of 0
+               0.00 seconds searching, evaluating 395 states, to a max depth of 0
                0.00 seconds total time
+

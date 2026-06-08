@@ -15,8 +15,9 @@ ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
     metric is ((1.00*[RF4](PRESUPUESTO-GASTADO)) - () + 0.00)
 
 advancing to distance:   14
+                         12
+                         11
                          10
-                          9
                           8
                           6
                           5
@@ -40,12 +41,13 @@ step    0: EMPEZAR-VIAJE BARCELONA
         9: RESERVAR-HOTEL HOTEL-R ROMA
        10: PASAR-DIA ROMA HOTEL-R
        11: TERMINAR-VIAJE ROMA
-
+     
 
 time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
                0.00 seconds reachability analysis, yielding 23 facts and 24 actions
                0.00 seconds creating final representation with 23 relevant facts, 12 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
-               0.00 seconds searching, evaluating 140 states, to a max depth of 0
+               0.00 seconds searching, evaluating 144 states, to a max depth of 0
                0.00 seconds total time
+

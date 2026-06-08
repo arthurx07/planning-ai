@@ -52,9 +52,9 @@
         (>= (dias-totales) 5)
 
         ;; Límites de precio
-        ;; Debe gastar al menos 900, y no pasarse de 1100
-        (>= (presupuesto-gastado) 900)
-        (<= (presupuesto-gastado) 1100)
+        ;; Debe gastar al menos 700, y no pasarse de 900
+        (>= (presupuesto-gastado) 700)
+        (<= (presupuesto-gastado) 900)
     ))
 
     ;; Se exige minimizar el precio total

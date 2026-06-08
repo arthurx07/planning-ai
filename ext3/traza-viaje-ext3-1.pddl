@@ -15,7 +15,7 @@ ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
     metric is ((1.00*[RF4](PRESUPUESTO-GASTADO)) - () + 0.00)
 
 advancing to distance:   14
-                         13
+                         12
                          11
                          10
                           8
@@ -29,18 +29,18 @@ advancing to distance:   14
 
 ff: found legal plan as follows
 
-step    0: EMPEZAR-VIAJE BARCELONA
-        1: RESERVAR-HOTEL HOTEL-B BARCELONA
-        2: PASAR-DIA BARCELONA HOTEL-B
-        3: PASAR-DIA BARCELONA HOTEL-B
-        4: VOLAR BARCELONA MADRID
-        5: RESERVAR-HOTEL HOTEL-M MADRID
-        6: PASAR-DIA MADRID HOTEL-M
-        7: PASAR-DIA MADRID HOTEL-M
-        8: VOLAR MADRID ROMA
-        9: RESERVAR-HOTEL HOTEL-R ROMA
-       10: PASAR-DIA ROMA HOTEL-R
-       11: TERMINAR-VIAJE ROMA
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL HOTEL-M MADRID
+        2: PASAR-DIA MADRID HOTEL-M
+        3: PASAR-DIA MADRID HOTEL-M
+        4: VOLAR MADRID ROMA
+        5: RESERVAR-HOTEL HOTEL-R ROMA
+        6: PASAR-DIA ROMA HOTEL-R
+        7: PASAR-DIA ROMA HOTEL-R
+        8: VOLAR ROMA PARIS
+        9: RESERVAR-HOTEL HOTEL-P PARIS
+       10: PASAR-DIA PARIS HOTEL-P
+       11: TERMINAR-VIAJE PARIS
      
 
 time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
@@ -48,6 +48,6 @@ time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
                0.00 seconds creating final representation with 23 relevant facts, 12 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph
-               0.00 seconds searching, evaluating 127 states, to a max depth of 0
+               0.00 seconds searching, evaluating 30 states, to a max depth of 0
                0.00 seconds total time
 

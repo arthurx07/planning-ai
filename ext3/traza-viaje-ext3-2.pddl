@@ -14,7 +14,7 @@ checking for cyclic := effects --- OK.
 ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
     metric is ((1.00*[RF5](PRESUPUESTO-GASTADO)) - () + 0.00)
 
-advancing to distance:   13
+advancing to distance:   12
                           7
                           6
                           5
@@ -39,7 +39,7 @@ step    0: EMPEZAR-VIAJE ORIGEN
      
 
 time spent:    0.00 seconds instantiating 26 easy, 0 hard action templates
-               0.00 seconds reachability analysis, yielding 28 facts and 21 actions
+               0.00 seconds reachability analysis, yielding 28 facts and 22 actions
                0.00 seconds creating final representation with 28 relevant facts, 13 relevant fluents
                0.00 seconds computing LNF
                0.00 seconds building connectivity graph

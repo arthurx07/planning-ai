@@ -51,8 +51,7 @@
         )
         :effect (and
             (tiene-hotel ?c)
-            ;; Sumamos el precio del hotel al presupuesto
-            (increase (presupuesto-gastado) (precio-hotel ?h))
+            ;; La reserva no suma coste: el hotel se paga por noche en pasar-dia.
         )
     )
 

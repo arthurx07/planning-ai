@@ -54,7 +54,7 @@
         ;; Límites de precio
         ;; Presupuesto inalcanzable
         (>= (presupuesto-gastado) 0)
-        (<= (presupuesto-gastado) 1079)
+        (<= (presupuesto-gastado) 709)
     ))
 
     ;; Se exige minimizar el precio total
