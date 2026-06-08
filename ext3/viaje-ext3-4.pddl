@@ -52,9 +52,9 @@
         (>= (dias-totales) 5)
 
         ;; Límites de precio
-        ;; Presupuesto inalcanzable
+        ;; Presupuesto inalcanzable: el coste mínimo verificado es 710
         (>= (presupuesto-gastado) 0)
-        (<= (presupuesto-gastado) 1079)
+        (<= (presupuesto-gastado) 709)
     ))
 
     ;; Se exige minimizar el precio total

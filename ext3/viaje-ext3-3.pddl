@@ -52,9 +52,9 @@
         (>= (dias-totales) 5)
 
         ;; Límites de precio
-        ;; Presupuesto muy ajustado (mínimo exacto)
-        (>= (presupuesto-gastado) 1080)
-        (<= (presupuesto-gastado) 1080)
+        ;; Presupuesto exacto del plan más barato encontrado con el modelo corregido
+        (>= (presupuesto-gastado) 710)
+        (<= (presupuesto-gastado) 710)
     ))
 
     ;; Se exige minimizar el precio total
