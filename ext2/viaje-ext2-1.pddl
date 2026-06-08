@@ -41,9 +41,7 @@
         (= (min-dias roma) 2)
         (= (max-dias roma) 3)
 
-        ;; ==========================================
         ;; VALORES DE INTERÉS (1 = Mayor interés, 3 = Menor interés)
-        ;; ==========================================
         (= (interes madrid) 1)
         (= (interes barcelona) 2)
         (= (interes paris) 3)
@@ -51,13 +49,11 @@
     )
 
     (:goal (and
-        (viaje-finalizado)                       
-        (>= (ciudades-visitadas) 3)              
-        (>= (dias-totales) 8)                    
+        (viaje-finalizado)
+        (>= (ciudades-visitadas) 3)
+        (>= (dias-totales) 8)
     ))
 
-    ;; ==========================================
     ;; OPTIMIZACIÓN DE MÉTRICA
-    ;; ==========================================
     (:metric minimize (interes-total))
 )

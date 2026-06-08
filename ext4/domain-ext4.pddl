@@ -17,17 +17,17 @@
 
     (:functions
         (ciudades-visitadas)
-        
+
         ;; TIEMPO
         (dias-en ?c - ciudad)
         (min-dias ?c - ciudad)
         (max-dias ?c - ciudad)
         (dias-totales)
-        
+
         ;; CUALITATIVO (Extensión 2)
         (interes ?c - ciudad)
         (interes-total)
-        
+
         ;; CUANTITATIVO (Extensión 3)
         (precio-vuelo ?origen - ciudad ?destino - ciudad)
         (precio-hotel ?h - hotel)
@@ -37,7 +37,7 @@
     (:action empezar-viaje
         :parameters (?c - ciudad)
         :precondition (and (viaje-por-empezar))
-        :effect (and 
+        :effect (and
             (not (viaje-por-empezar))
             (en-actual ?c)
             (visitada ?c)
@@ -48,12 +48,12 @@
 
     (:action reservar-hotel
         :parameters (?h - hotel ?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (en-ciudad ?h ?c)
             (not (tiene-hotel ?c))
         )
-        :effect (and 
+        :effect (and
             (tiene-hotel ?c)
             (increase (presupuesto-gastado) (precio-hotel ?h)) ; Suma dinero
         )
@@ -61,12 +61,12 @@
 
     (:action pasar-dia
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (tiene-hotel ?c)
             (< (dias-en ?c) (max-dias ?c))
         )
-        :effect (and 
+        :effect (and
             (increase (dias-en ?c) 1)
             (increase (dias-totales) 1)
         )
@@ -74,13 +74,13 @@
 
     (:action volar
         :parameters (?origen - ciudad ?destino - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))
             (>= (dias-en ?origen) (min-dias ?origen))
         )
-        :effect (and 
+        :effect (and
             (not (en-actual ?origen))
             (en-actual ?destino)
             (visitada ?destino)
@@ -92,11 +92,11 @@
 
     (:action terminar-viaje
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (>= (dias-en ?c) (min-dias ?c))
         )
-        :effect (and 
+        :effect (and
             (viaje-finalizado)
         )
     )

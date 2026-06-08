@@ -17,27 +17,25 @@
 
     (:functions
         (ciudades-visitadas)
-        
+
         ;; FUNCIONES DE TIEMPO (De la Extensión 1)
         (dias-en ?c - ciudad)                ; Días transcurridos en la ciudad actual
         (min-dias ?c - ciudad)               ; Mínimo de días obligatorio
         (max-dias ?c - ciudad)               ; Máximo de días permitido
         (dias-totales)                       ; Contador global de días del viaje
-        
+
         ;; FUNCIONES DE OPTIMIZACIÓN (De la Extensión 2)
         (interes ?c - ciudad)                ; Grado de interés (1 = Máximo, 3 = Mínimo)
         (interes-total)                      ; Acumulador numérico que optimizará metric-ff
     )
 
-    ;; ===================================================
-    ;; ACCIÓN 1: Inicializar el viaje en una ciudad libre
-    ;; ===================================================
+    ;; 1: Inicializar el viaje en una ciudad libre
     (:action empezar-viaje
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (viaje-por-empezar)
         )
-        :effect (and 
+        :effect (and
             (not (viaje-por-empezar))
             (en-actual ?c)
             (visitada ?c)
@@ -46,49 +44,43 @@
         )
     )
 
-    ;; ===================================================
-    ;; ACCIÓN 2: Reservar alojamiento en la ciudad actual
-    ;; ===================================================
+    ;; 2: Reservar alojamiento en la ciudad actual
     (:action reservar-hotel
         :parameters (?h - hotel ?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (en-ciudad ?h ?c)
             (not (tiene-hotel ?c))
         )
-        :effect (and 
+        :effect (and
             (tiene-hotel ?c)
         )
     )
 
-    ;; ===================================================
-    ;; ACCIÓN 3: Consumir un día de estancia
-    ;; ===================================================
+    ;; 3: Consumir un día de estancia
     (:action pasar-dia
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
-            (tiene-hotel ?c)                 ; Hito fundamental: obliga a reservar antes de vivir en ella
+            (tiene-hotel ?c)                 ; Obliga a reservar antes de estar en ella
             (< (dias-en ?c) (max-dias ?c))   ; Freno numérico para el máximo
         )
-        :effect (and 
+        :effect (and
             (increase (dias-en ?c) 1)
             (increase (dias-totales) 1)
         )
     )
 
-    ;; ===================================================
-    ;; ACCIÓN 4: Viajar en avión hacia un nuevo destino
-    ;; ===================================================
+    ;; 4: Viajar en avión hacia un nuevo destino
     (:action volar
         :parameters (?origen - ciudad ?destino - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))        ; Restricción del enunciado: no repetir ciudades
             (>= (dias-en ?origen) (min-dias ?origen)) ; Peaje temporal: cumplir días mínimos en origen
         )
-        :effect (and 
+        :effect (and
             (not (en-actual ?origen))
             (en-actual ?destino)
             (visitada ?destino)
@@ -97,16 +89,14 @@
         )
     )
 
-    ;; ===================================================
-    ;; ACCIÓN 5: Validar y concluir el itinerario completo
-    ;; ===================================================
+    ;; 5: Validar y concluir el itinerario completo
     (:action terminar-viaje
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (>= (dias-en ?c) (min-dias ?c))  ; Peaje temporal: cumplir días mínimos en la última ciudad
         )
-        :effect (and 
+        :effect (and
             (viaje-finalizado)
         )
     )

@@ -16,15 +16,15 @@
 
     (:functions
         (ciudades-visitadas)
-        (hoteles-reservados) 
+        (hoteles-reservados)
     )
 
     (:action empezar-viaje
         :parameters (?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (viaje-por-empezar)
         )
-        :effect (and 
+        :effect (and
             (not (viaje-por-empezar))
             (en-actual ?c)
             (visitada ?c)
@@ -34,12 +34,12 @@
 
     (:action reservar-hotel
         :parameters (?h - hotel ?c - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?c)
             (en-ciudad ?h ?c)
             (not (tiene-hotel ?c))
         )
-        :effect (and 
+        :effect (and
             (tiene-hotel ?c)
             (increase (hoteles-reservados) 1)
         )
@@ -47,13 +47,13 @@
 
     (:action volar
         :parameters (?origen - ciudad ?destino - ciudad)
-        :precondition (and 
+        :precondition (and
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))
             (tiene-hotel ?origen)
         )
-        :effect (and 
+        :effect (and
             (not (en-actual ?origen))
             (en-actual ?destino)
             (visitada ?destino)

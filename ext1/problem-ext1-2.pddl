@@ -40,9 +40,7 @@
         (= (dias-en paris) 0)
         (= (dias-en roma) 0)
 
-        ;; ==========================================
         ;; RESTRICCIONES DE TIEMPO (El truco de este problema)
-        ;; ==========================================
         ;; Ciudades normales: mínimo 2 días, máximo 4
         (= (min-dias madrid) 2)
         (= (max-dias madrid) 4)
@@ -62,13 +60,13 @@
     )
 
     (:goal (and
-        (viaje-finalizado)                       
+        (viaje-finalizado)
         ;; Exigimos visitar al menos 4 ciudades (ej: Madrid -> Bcn -> Lyon -> Paris)
-        (>= (ciudades-visitadas) 4)              
-        
+        (>= (ciudades-visitadas) 4)
+
         ;; Exigimos que el viaje dure al menos 10 días totales.
-        ;; Como en Lyon solo pueden estar 1 día, tendrán que pasar 9 días 
+        ;; Como en Lyon solo pueden estar 1 día, tendrán que pasar 9 días
         ;; repartidos entre las otras 3 ciudades visitadas.
-        (>= (dias-totales) 10)                    
+        (>= (dias-totales) 10)
     ))
 )

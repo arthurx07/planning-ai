@@ -24,7 +24,7 @@
         (= (dias-totales) 0)
         (= (presupuesto-gastado) 0)
 
-        (= (dias-en madrid) 0) (= (dias-en barcelona) 0) 
+        (= (dias-en madrid) 0) (= (dias-en barcelona) 0)
         (= (dias-en paris) 0) (= (dias-en roma) 0)
 
         ;; Tiempos estándar
@@ -33,9 +33,7 @@
         (= (min-dias paris) 1) (= (max-dias paris) 3)
         (= (min-dias roma) 1) (= (max-dias roma) 3)
 
-        ;; ==========================================
         ;; PRECIOS (Diferentes para cumplir el requisito)
-        ;; ==========================================
         (= (precio-hotel hotel-m) 100)
         (= (precio-hotel hotel-b) 120)
         (= (precio-hotel hotel-p) 200)
@@ -53,12 +51,12 @@
         (>= (ciudades-visitadas) 3)
         (>= (dias-totales) 5)
 
-        ;; EL REQUISITO DE LA EXTENSIÓN 3: Límites de precio 
+        ;; Límites de precio
         ;; Debe gastar al menos 400, y no pasarse de 1000
         (>= (presupuesto-gastado) 400)
         (<= (presupuesto-gastado) 1000)
     ))
 
-    ;; Se exige minimizar el precio total 
+    ;; Se exige minimizar el precio total
     (:metric minimize (presupuesto-gastado))
 )

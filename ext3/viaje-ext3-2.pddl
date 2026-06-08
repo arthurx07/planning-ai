@@ -18,7 +18,7 @@
         ;; RUTA 1: Vuelos baratos, Hoteles Caros
         (conectada origen caro1) (conectada caro1 origen)
         (conectada caro1 caro2) (conectada caro2 caro1)
-        
+
         ;; RUTA 2: Vuelos caros, Hoteles Baratos
         (conectada origen barato1) (conectada barato1 origen)
         (conectada barato1 barato2) (conectada barato2 barato1)
@@ -36,9 +36,7 @@
         (= (min-dias caro1) 1) (= (max-dias caro1) 2)
         (= (min-dias caro2) 1) (= (max-dias caro2) 2)
 
-        ;; ==========================================
-        ;; LA TRAMPA DE LOS PRECIOS
-        ;; ==========================================
+        ;; PRECIOS
         ;; Ruta 1: Volar cuesta solo 10, pero dormir cuesta 300
         (= (precio-vuelo origen caro1) 10)
         (= (precio-vuelo caro1 caro2) 10)
