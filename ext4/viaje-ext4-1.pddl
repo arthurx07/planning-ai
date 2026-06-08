@@ -56,6 +56,7 @@
     (:goal (and
         (viaje-finalizado)
         (>= (ciudades-visitadas) 3)
+        (>= (dias-totales) 3)
     ))
 
     ;; PONDERACIÓN:

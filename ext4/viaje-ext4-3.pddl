@@ -72,6 +72,7 @@
     (:goal (and
         (viaje-finalizado)
         (>= (ciudades-visitadas) 3)
+        (>= (dias-totales) 3)
 
         ;; 1. Se exige calidad: El interés total debe ser bueno (<= 6)
         ;; Descarta automáticamente la ruta Low-Cost (Zaragoza/Murcia sumaría 2+3+3 = 8)
@@ -79,7 +80,7 @@
 
         ;; 2. Se exige control del gasto: El presupuesto no puede pasar de 700€
         ;; Descarta automáticamente la ruta VIP (Roma/Florencia cuesta ~1100€)
-        (<= (presupuesto-gastado) 700)
+        (<= (presupuesto-gastado) 500)
     ))
 
     ;; Se optimiza de forma equilibrada
