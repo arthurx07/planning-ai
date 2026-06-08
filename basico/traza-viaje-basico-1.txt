@@ -1,0 +1,39 @@
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES' defined
+ ... done.
+ff: parsing problem file
+problem 'VIAJE-BASICO-1' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:    3 into depth [1][2]
+                                   2            [1][2]
+                                   1            [1][2]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: EMPEZAR-VIAJE ROMA
+        1: RESERVAR-HOTEL HOTEL-R ROMA
+        2: VOLAR ROMA PARIS
+        3: RESERVAR-HOTEL HOTEL-P PARIS
+        4: VOLAR PARIS BARCELONA
+        5: RESERVAR-HOTEL HOTEL-B BARCELONA
+     
+
+time spent:    0.00 seconds instantiating 16 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 21 facts and 16 actions
+               0.00 seconds creating final representation with 21 relevant facts, 6 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 11 states, to a max depth of 2
+               0.00 seconds total time
+
