@@ -1,0 +1,48 @@
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES-EXT3' defined
+ ... done.
+ff: parsing problem file
+problem 'VIAJE-EXT3-2' defined
+ ... done.
+
+
+metric established (normalized to minimize): ((1.00*[RF5](PRESUPUESTO-GASTADO)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF5](PRESUPUESTO-GASTADO)) - () + 0.00)
+
+advancing to distance:   13
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: EMPEZAR-VIAJE BARATO2
+        1: RESERVAR-HOTEL H-B2 BARATO2
+        2: PASAR-DIA BARATO2 H-B2
+        3: VOLAR BARATO2 BARATO1
+        4: RESERVAR-HOTEL H-B1 BARATO1
+        5: PASAR-DIA BARATO1 H-B1
+        6: VOLAR BARATO1 ORIGEN
+        7: RESERVAR-HOTEL H-ORIGEN ORIGEN
+        8: PASAR-DIA ORIGEN H-ORIGEN
+        9: TERMINAR-VIAJE ORIGEN
+     
+
+time spent:    0.00 seconds instantiating 28 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 28 facts and 28 actions
+               0.00 seconds creating final representation with 28 relevant facts, 14 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 36 states, to a max depth of 0
+               0.00 seconds total time
+
