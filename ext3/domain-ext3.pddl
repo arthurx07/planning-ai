@@ -44,6 +44,7 @@
     (:action reservar-hotel
         :parameters (?h - hotel ?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
             (en-ciudad ?h ?c)
             (not (tiene-hotel ?c))
@@ -58,6 +59,7 @@
     (:action pasar-dia
         :parameters (?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
             (tiene-hotel ?c)
             (< (dias-en ?c) (max-dias ?c))
@@ -71,6 +73,7 @@
     (:action volar
         :parameters (?origen - ciudad ?destino - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))
@@ -89,6 +92,7 @@
     (:action terminar-viaje
         :parameters (?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
             (>= (dias-en ?c) (min-dias ?c))
         )

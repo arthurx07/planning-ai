@@ -52,9 +52,9 @@
         (>= (dias-totales) 5)
 
         ;; Límites de precio
-        ;; Debe gastar al menos 400, y no pasarse de 1000
-        (>= (presupuesto-gastado) 400)
-        (<= (presupuesto-gastado) 1000)
+        ;; Presupuesto inalcanzable
+        (>= (presupuesto-gastado) 0)
+        (<= (presupuesto-gastado) 500)
     ))
 
     ;; Se exige minimizar el precio total
