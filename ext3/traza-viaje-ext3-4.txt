@@ -1,0 +1,2 @@
+TRAZA DE VALIDACIÓN POR SIMULACIÓN
+Problema sin solución válida según búsqueda exhaustiva.

@@ -1,0 +1,117 @@
+VALIDACIÓN AUTOMÁTICA DEL MODELO MEJORADO
+Nota: esta validación comprueba estructura PDDL, precios definidos y existencia de planes mediante simulación exhaustiva del dominio de viajes usado en las extensiones 3 y 4. No sustituye la traza oficial de Metric-FF, que debe regenerarse localmente con el planificador.
+
+[PAREN] basico/domain-basico.pddl: OK (depth final 0)
+[PAREN] basico/viaje-basico-1.pddl: OK (depth final 0)
+[PAREN] basico/viaje-basico-2.pddl: OK (depth final 0)
+[PAREN] ext1/domain-ext1.pddl: OK (depth final 0)
+[PAREN] ext1/viaje-ext1-1.pddl: OK (depth final 0)
+[PAREN] ext1/viaje-ext1-2.pddl: OK (depth final 0)
+[PAREN] ext1/viaje-ext1-3.pddl: OK (depth final 0)
+[PAREN] ext2/domain-ext2.pddl: OK (depth final 0)
+[PAREN] ext2/viaje-ext2-1.pddl: OK (depth final 0)
+[PAREN] ext2/viaje-ext2-2.pddl: OK (depth final 0)
+[PAREN] ext3/domain-ext3.pddl: OK (depth final 0)
+[PAREN] ext3/viaje-ext3-1.pddl: OK (depth final 0)
+[PAREN] ext3/viaje-ext3-2.pddl: OK (depth final 0)
+[PAREN] ext3/viaje-ext3-3.pddl: OK (depth final 0)
+[PAREN] ext3/viaje-ext3-4.pddl: OK (depth final 0)
+[PAREN] ext4/domain-ext4.pddl: OK (depth final 0)
+[PAREN] ext4/viaje-ext4-1.pddl: OK (depth final 0)
+[PAREN] ext4/viaje-ext4-2.pddl: OK (depth final 0)
+[PAREN] ext4/viaje-ext4-3.pddl: OK (depth final 0)
+
+[PRECIOS VUELO] ext3/viaje-ext3-1.pddl: OK
+[PRECIOS VUELO] ext3/viaje-ext3-2.pddl: OK
+[PRECIOS VUELO] ext3/viaje-ext3-3.pddl: OK
+[PRECIOS VUELO] ext3/viaje-ext3-4.pddl: OK
+[PRECIOS VUELO] ext4/viaje-ext4-1.pddl: OK
+[PRECIOS VUELO] ext4/viaje-ext4-2.pddl: OK
+[PRECIOS VUELO] ext4/viaje-ext4-3.pddl: OK
+
+[PLAN] ext3/viaje-ext3-1.pddl: OK
+Plan verificado por simulación: coste=710, interés=0, días=5, ciudades=3
+step    0: EMPEZAR-VIAJE BARCELONA
+        1: RESERVAR-HOTEL HOTEL-B BARCELONA
+        2: PASAR-DIA BARCELONA HOTEL-B
+        3: VOLAR BARCELONA MADRID
+        4: RESERVAR-HOTEL HOTEL-M MADRID
+        5: PASAR-DIA MADRID HOTEL-M
+        6: PASAR-DIA MADRID HOTEL-M
+        7: PASAR-DIA MADRID HOTEL-M
+        8: VOLAR MADRID ROMA
+        9: RESERVAR-HOTEL HOTEL-R ROMA
+       10: PASAR-DIA ROMA HOTEL-R
+       11: TERMINAR-VIAJE ROMA
+
+[PLAN] ext3/viaje-ext3-2.pddl: OK
+Plan verificado por simulación: coste=540, interés=0, días=3, ciudades=3
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL H-MADRID MADRID
+        2: PASAR-DIA MADRID H-MADRID
+        3: VOLAR MADRID BARATO1
+        4: RESERVAR-HOTEL H-B1 BARATO1
+        5: PASAR-DIA BARATO1 H-B1
+        6: VOLAR BARATO1 CARO1
+        7: RESERVAR-HOTEL H-C1 CARO1
+        8: PASAR-DIA CARO1 H-C1
+        9: TERMINAR-VIAJE CARO1
+
+[PLAN] ext3/viaje-ext3-3.pddl: OK
+Plan verificado por simulación: coste=710, interés=0, días=5, ciudades=3
+step    0: EMPEZAR-VIAJE BARCELONA
+        1: RESERVAR-HOTEL HOTEL-B BARCELONA
+        2: PASAR-DIA BARCELONA HOTEL-B
+        3: VOLAR BARCELONA MADRID
+        4: RESERVAR-HOTEL HOTEL-M MADRID
+        5: PASAR-DIA MADRID HOTEL-M
+        6: PASAR-DIA MADRID HOTEL-M
+        7: PASAR-DIA MADRID HOTEL-M
+        8: VOLAR MADRID ROMA
+        9: RESERVAR-HOTEL HOTEL-R ROMA
+       10: PASAR-DIA ROMA HOTEL-R
+       11: TERMINAR-VIAJE ROMA
+
+[PLAN] ext3/viaje-ext3-4.pddl: OK
+Sin plan válido encontrado. Esto es esperado solo en viaje-ext3-4, que prueba un presupuesto inalcanzable.
+
+[PLAN] ext4/viaje-ext4-1.pddl: OK
+Plan verificado por simulación: coste=150, interés=8, días=3, ciudades=3
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL H-MADRID MADRID
+        2: PASAR-DIA MADRID H-MADRID
+        3: VOLAR MADRID ZARAGOZA
+        4: RESERVAR-HOTEL H-ZAR ZARAGOZA
+        5: PASAR-DIA ZARAGOZA H-ZAR
+        6: VOLAR ZARAGOZA MURCIA
+        7: RESERVAR-HOTEL H-MUR MURCIA
+        8: PASAR-DIA MURCIA H-MUR
+        9: TERMINAR-VIAJE MURCIA
+
+[PLAN] ext4/viaje-ext4-2.pddl: OK
+Plan verificado por simulación: coste=650, interés=4, días=3, ciudades=3
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL H-MADRID MADRID
+        2: PASAR-DIA MADRID H-MADRID
+        3: VOLAR MADRID ROMA
+        4: RESERVAR-HOTEL H-ROMA ROMA
+        5: PASAR-DIA ROMA H-ROMA
+        6: VOLAR ROMA FLORENCIA
+        7: RESERVAR-HOTEL H-FLO FLORENCIA
+        8: PASAR-DIA FLORENCIA H-FLO
+        9: TERMINAR-VIAJE FLORENCIA
+
+[PLAN] ext4/viaje-ext4-3.pddl: OK
+Plan verificado por simulación: coste=310, interés=6, días=3, ciudades=3
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL H-MADRID MADRID
+        2: PASAR-DIA MADRID H-MADRID
+        3: VOLAR MADRID OPORTO
+        4: RESERVAR-HOTEL H-OPO OPORTO
+        5: PASAR-DIA OPORTO H-OPO
+        6: VOLAR OPORTO LISBOA
+        7: RESERVAR-HOTEL H-LIS LISBOA
+        8: PASAR-DIA LISBOA H-LIS
+        9: TERMINAR-VIAJE LISBOA
+
+RESULTADO GLOBAL: OK
