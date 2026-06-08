@@ -1,0 +1,66 @@
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES-EXT1' defined
+ ... done.
+ff: parsing problem file
+problem 'VIAJE-EXT1-2' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   21 into depth [1]
+                                  16            [1]
+                                  15            [1]
+                                  14            [1]
+                                  13            [1]
+                                  12            [1][2]
+                                  11            [1]
+                                  10            [1]
+                                   9            [1]
+                                   8            [1]
+                                   7            [1]
+                                   6            [1]
+                                   5            [1][2]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: EMPEZAR-VIAJE MADRID
+        1: RESERVAR-HOTEL HOTEL-M MADRID
+        2: PASAR-DIA MADRID
+        3: PASAR-DIA MADRID
+        4: PASAR-DIA MADRID
+        5: VOLAR MADRID BARCELONA
+        6: RESERVAR-HOTEL HOTEL-B BARCELONA
+        7: PASAR-DIA BARCELONA
+        8: PASAR-DIA BARCELONA
+        9: PASAR-DIA BARCELONA
+       10: PASAR-DIA BARCELONA
+       11: VOLAR BARCELONA LYON
+       12: RESERVAR-HOTEL HOTEL-L LYON
+       13: PASAR-DIA LYON
+       14: VOLAR LYON PARIS
+       15: RESERVAR-HOTEL HOTEL-P PARIS
+       16: PASAR-DIA PARIS
+       17: PASAR-DIA PARIS
+       18: TERMINAR-VIAJE PARIS
+     
+
+time spent:    0.00 seconds instantiating 28 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 28 facts and 28 actions
+               0.00 seconds creating final representation with 28 relevant facts, 12 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 28 states, to a max depth of 2
+               0.00 seconds total time
+

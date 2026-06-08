@@ -41,6 +41,7 @@
     (:action reservar-hotel
         :parameters (?h - hotel ?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
             (en-ciudad ?h ?c)
             (not (tiene-hotel ?c))
@@ -54,8 +55,9 @@
     (:action pasar-dia
         :parameters (?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
-            (tiene-hotel ?c)                 ; Lógico: no pasas días si no tienes dónde dormir
+            (tiene-hotel ?c)                 ; No pasas días si no tienes dónde dormir
             (< (dias-en ?c) (max-dias ?c))   ; Límite máximo de días en la ciudad
         )
         :effect (and
@@ -67,6 +69,7 @@
     (:action volar
         :parameters (?origen - ciudad ?destino - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))
@@ -84,6 +87,7 @@
     (:action terminar-viaje
         :parameters (?c - ciudad)
         :precondition (and
+            (not (viaje-finalizado))
             (en-actual ?c)
             (tiene-hotel ?c)                 ; OPTIMIZACIÓN: Obligamos a tener hotel en la última ciudad
             (>= (dias-en ?c) (min-dias ?c))  ; Comprobamos el mínimo de días de la última ciudad

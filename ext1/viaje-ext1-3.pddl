@@ -68,5 +68,7 @@
         ;; Como en Lyon solo pueden estar 1 día, tendrán que pasar 9 días
         ;; repartidos entre las otras 3 ciudades visitadas.
         (>= (dias-totales) 10)
+        (visitada roma)
+        (visitada paris)
     ))
 )

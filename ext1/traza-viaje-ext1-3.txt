@@ -1,0 +1,56 @@
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES-EXT1' defined
+ ... done.
+ff: parsing problem file
+problem 'VIAJE-EXT1-2' defined
+ ... done.
+
+
+no metric specified. plan length assumed.
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is EHC, if that fails then  best-first on 1*g(s) + 5*h(s) where
+    metric is  plan length
+
+Cueing down from goal distance:   21 into depth [1]
+                                  19            [1]
+                                  18            [1]
+                                  17            [1]
+                                  16            [1]
+                                  14            [1]
+                                  13            [1]
+                                  12            [1] --- pruning stopped --- [1]
+
+Enforced Hill-climbing failed !
+switching to Best-first Search now.
+
+
+advancing to distance:   21
+                         17
+                         16
+                         15
+                         14
+                         13
+                         12
+                         11
+                         10
+                          9
+                          8
+                          7
+                          6
+                          5
+
+best first search space empty! problem proven unsolvable.
+
+
+
+time spent:    0.00 seconds instantiating 28 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 28 facts and 28 actions
+               0.00 seconds creating final representation with 28 relevant facts, 12 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 199 states, to a max depth of 1
+               0.00 seconds total time
+
