@@ -1,4 +1,4 @@
-(define (problem viaje-ext4-1-barato)
+(define (problem viaje-ext4-1)
     (:domain agencia-viajes-ext4)
 
     (:objects
@@ -15,7 +15,7 @@
         ;; RUTA VIP
         (conectada origen roma) (conectada roma origen)
         (conectada roma florencia) (conectada florencia roma)
-        
+
         ;; RUTA LOW-COST
         (conectada origen zaragoza) (conectada zaragoza origen)
         (conectada zaragoza murcia) (conectada murcia zaragoza)
@@ -58,7 +58,7 @@
         (>= (ciudades-visitadas) 3)
     ))
 
-    ;; PONDERACIÓN: 
+    ;; PONDERACIÓN:
     ;; Multiplicamos el interés por 1, y el presupuesto por 1.
     ;; Resultado: El presupuesto ahoga al interés. El planificador elegirá Low-Cost.
     (:metric minimize (+ (* 1 (interes-total)) (* 1 (presupuesto-gastado))))

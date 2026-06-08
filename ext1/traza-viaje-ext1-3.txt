@@ -3,7 +3,7 @@ ff: parsing domain file
 domain 'AGENCIA-VIAJES-EXT1' defined
  ... done.
 ff: parsing problem file
-problem 'VIAJE-EXT1-2' defined
+problem 'VIAJE-EXT1-3' defined
  ... done.
 
 
@@ -53,4 +53,3 @@ time spent:    0.00 seconds instantiating 28 easy, 0 hard action templates
                0.00 seconds building connectivity graph
                0.00 seconds searching, evaluating 199 states, to a max depth of 1
                0.00 seconds total time
-

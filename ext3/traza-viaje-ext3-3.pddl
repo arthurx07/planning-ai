@@ -3,7 +3,7 @@ ff: parsing domain file
 domain 'AGENCIA-VIAJES-EXT3' defined
  ... done.
 ff: parsing problem file
-problem 'VIAJE-EXT3-1' defined
+problem 'VIAJE-EXT3-3' defined
  ... done.
 
 
@@ -40,7 +40,7 @@ step    0: EMPEZAR-VIAJE BARCELONA
         9: RESERVAR-HOTEL HOTEL-R ROMA
        10: PASAR-DIA ROMA HOTEL-R
        11: TERMINAR-VIAJE ROMA
-     
+
 
 time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
                0.00 seconds reachability analysis, yielding 23 facts and 24 actions
@@ -49,4 +49,3 @@ time spent:    0.00 seconds instantiating 24 easy, 0 hard action templates
                0.00 seconds building connectivity graph
                0.00 seconds searching, evaluating 140 states, to a max depth of 0
                0.00 seconds total time
-

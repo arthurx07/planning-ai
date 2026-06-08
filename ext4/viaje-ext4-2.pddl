@@ -1,4 +1,4 @@
-(define (problem viaje-ext4-1-barato)
+(define (problem viaje-ext4-2)
     (:domain agencia-viajes-ext4)
 
     (:objects
@@ -15,7 +15,7 @@
         ;; RUTA VIP
         (conectada origen roma) (conectada roma origen)
         (conectada roma florencia) (conectada florencia roma)
-        
+
         ;; RUTA LOW-COST
         (conectada origen zaragoza) (conectada zaragoza origen)
         (conectada zaragoza murcia) (conectada murcia zaragoza)
@@ -59,8 +59,8 @@
     ))
 
 ;; PONDERACIÓN CUALITATIVA:
-    ;; Multiplicamos el interés por 500. Ahora bajar de un interés 3 a un 1 
-    ;; equivale a ahorrar 1000€. El planificador elegirá pagar los vuelos caros 
+    ;; Multiplicamos el interés por 500. Ahora bajar de un interés 3 a un 1
+    ;; equivale a ahorrar 1000€. El planificador elegirá pagar los vuelos caros
     ;; e irá a la Ruta VIP.
     (:metric minimize (+ (* 500 (interes-total)) (* 1 (presupuesto-gastado))))
 )

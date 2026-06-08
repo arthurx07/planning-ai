@@ -1,4 +1,4 @@
-(define (problem viaje-ext3-1)
+(define (problem viaje-ext3-4)
     (:domain agencia-viajes-ext3)
 
     (:objects
