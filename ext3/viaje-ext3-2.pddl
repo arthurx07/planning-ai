@@ -38,14 +38,14 @@
 
         ;; PRECIOS
         ;; Ruta 1: Volar cuesta solo 10, pero dormir cuesta 300
-        (= (precio-vuelo origen caro1) 10)
-        (= (precio-vuelo caro1 caro2) 10)
+        (= (precio-vuelo origen caro1) 10) (= (precio-vuelo caro1 origen) 10)
+        (= (precio-vuelo caro1 caro2) 10) (= (precio-vuelo caro2 caro1) 10)
         (= (precio-hotel h-c1) 300)
         (= (precio-hotel h-c2) 300)
 
         ;; Ruta 2: Volar es muy caro (100), pero dormir es casi gratis (20)
-        (= (precio-vuelo origen barato1) 100)
-        (= (precio-vuelo barato1 barato2) 100)
+        (= (precio-vuelo origen barato1) 100) (= (precio-vuelo barato1 origen) 100)
+        (= (precio-vuelo barato1 barato2) 100) (= (precio-vuelo barato2 barato1) 100)
         (= (precio-hotel h-b1) 20)
         (= (precio-hotel h-b2) 20)
 

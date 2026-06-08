@@ -57,16 +57,18 @@
     )
 
     (:action pasar-dia
-        :parameters (?c - ciudad)
+        :parameters (?c - ciudad ?h - hotel)
         :precondition (and
             (not (viaje-finalizado))
             (en-actual ?c)
+            (en-ciudad ?h ?c)
             (tiene-hotel ?c)
             (< (dias-en ?c) (max-dias ?c))
         )
         :effect (and
             (increase (dias-en ?c) 1)
             (increase (dias-totales) 1)
+            (increase (presupuesto-gastado) (precio-hotel ?h))      ; El coste se acumula por noche en hotel
         )
     )
 
@@ -77,6 +79,7 @@
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))
+            (tiene-hotel ?origen)            ; Si vuela a una ciudad, debe reservar hotel
             (>= (dias-en ?origen) (min-dias ?origen))
         )
         :effect (and
@@ -94,6 +97,7 @@
         :precondition (and
             (not (viaje-finalizado))
             (en-actual ?c)
+            (tiene-hotel ?c)
             (>= (dias-en ?c) (min-dias ?c))
         )
         :effect (and

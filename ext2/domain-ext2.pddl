@@ -81,6 +81,7 @@
             (en-actual ?origen)
             (conectada ?origen ?destino)
             (not (visitada ?destino))        ; Restricción del enunciado: no repetir ciudades
+            (tiene-hotel ?origen)            ; Si vuela a una ciudad, debe reservar hotel
             (>= (dias-en ?origen) (min-dias ?origen)) ; Peaje temporal: cumplir días mínimos en origen
         )
         :effect (and
@@ -98,6 +99,7 @@
         :precondition (and
             (not (viaje-finalizado))
             (en-actual ?c)
+            (tiene-hotel ?c)
             (>= (dias-en ?c) (min-dias ?c))  ; Peaje temporal: cumplir días mínimos en la última ciudad
         )
         :effect (and
